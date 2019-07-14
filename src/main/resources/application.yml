@@ -1,0 +1,49 @@
+spring:
+  freemarker:
+    settings:
+      classic_compatible: true
+    cache: false  #禁用模板引擎的缓存
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    #日志级别调节
+  profiles:
+    active:
+      # 国际化组件
+  messages:
+    basename: i18n.login
+  mvc:
+    ## 格式化日期
+    ##date-format: yyyy-MM-dd HH:mm
+logging:
+  level:
+    com.gds.springbootdemo: debug
+  pattern:
+
+User:
+  name: zhangsan
+  age: 28
+  id: 01
+server:
+  port: 8080
+  servlet:
+    context-path: /crud
+---
+server:
+  port: 8082
+spring:
+  profiles: dev
+---
+server:
+  port: 8083
+spring:
+  profiles: prod
+---
+server:
+  port: 8084
+spring:
+  profiles: abd
+---
