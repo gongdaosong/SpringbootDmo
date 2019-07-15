@@ -78,17 +78,17 @@
 									<td th:text="${#dates.format(emp.birth,'yyyy-MM-dd HH:mm')}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
-										<form th:action="@{/emp/}+${emp.id}" method="post">
-											<input type="hidden" name="_method" value="delete">
-											<button class="btn btn-sm btn-danger" type="submit">删除</button>
-										</form>
 
+										<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn" >删除</button>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</main>
+				<form id="deleteEmpForm" method="post">
+					<input type="hidden" name="_method" value="delete">
+				</form>
 			</div>
 		</div>
 
@@ -108,6 +108,12 @@
 		<!-- Graphs -->
 		<script type="text/javascript" th:href="@{/asserts/js/Chart.min.js}" src="asserts/js/Chart.min.js"></script>
 		<script>
+			$(".deleteBtn").click(function () {
+				// 删除当前员工
+				$("#deleteEmpForm").attr("action", $(this).attr("del_uri")).submit();
+				return false;
+			});
+
 			var ctx = document.getElementById("myChart");
 			var myChart = new Chart(ctx, {
 				type: 'line',

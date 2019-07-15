@@ -45,8 +45,8 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             public void addInterceptors(InterceptorRegistry registry) {
                 // 静态资源 ： *.css *.js
                 // Springboot 已经做好了静态资源的映射
-                registry.addInterceptor(new LoginHandInterceptor()).addPathPatterns("/*")
-                        .excludePathPatterns("/index.html","/","/user/login");
+               /* registry.addInterceptor(new LoginHandInterceptor()).addPathPatterns("/*")
+                        .excludePathPatterns("/index.html","/","/user/login");*/
             }
         };
         return adapter;
