@@ -19,7 +19,6 @@ import java.util.Map;
 @ControllerAdvice
 public class MyExceptionHandler {
 
-
     @ExceptionHandler(UserNotException.class)
    public String handlerException(Exception e, HttpServletRequest request){
        Map<String, Object> map = new HashMap<String, Object>();
